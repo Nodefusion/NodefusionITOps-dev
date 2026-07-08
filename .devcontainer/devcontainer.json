@@ -17,12 +17,16 @@
   },
 
   "initializeCommand": "mkdir -p ${localWorkspaceFolder}/../ado-source",
-  "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && echo $SECRETS_JSON > src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && gh codespace ports visibility 5114:public 7246:public -c $CODESPACE_NAME",
+  "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && echo $SECRETS_JSON > src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj",
 
   "forwardPorts": [5114, 7246],
   "portsAttributes": {
+    "5114": {
+      "visibility": "public"
+    },
     "7246": {
-      "protocol": "https"
+      "protocol": "https",
+      "visibility": "public"
     }
   },
 
