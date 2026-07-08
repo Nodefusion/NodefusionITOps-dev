@@ -6,13 +6,13 @@
     "ghcr.io/microsoft/codespace-features/external-repository:latest": {
       "gitProvider": "azuredevops",
       "cloneUrl": "https://dev.azure.com/Nodefusion/NodefusionITOps/_git/NodefusionITOps",
-      "folder": "/workspaces/NodefusionITOps"
+      "folder": "/workspaces/ado-source"
     }
   },
 
-  "workspaceFolder": "/workspaces/NodefusionITOps",
+  "workspaceFolder": "/workspaces/ado-source",
 
-  "initializeCommand": "mkdir -p ${localWorkspaceFolder}/../NodefusionITOps",
+  "initializeCommand": "mkdir -p ${localWorkspaceFolder}/../ado-source",
   "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj",
 
   "forwardPorts": [5114, 7246],
