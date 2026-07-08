@@ -1,0 +1,35 @@
+{
+  "name": "NodefusionITOps .NET Codespace",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
+
+  "features": {
+    "ghcr.io/microsoft/codespace-features/external-repository:latest": {
+      "gitProvider": "azuredevops",
+      "cloneUrl": "https://dev.azure.com/Nodefusion/NodefusionITOps/_git/NodefusionITOps",
+      "folder": "/workspaces/NodefusionITOps"
+    }
+  },
+
+  "workspaceFolder": "/workspaces/NodefusionITOps",
+
+  "initializeCommand": "mkdir -p ${localWorkspaceFolder}/../NodefusionITOps",
+  "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj",
+
+  "forwardPorts": [5114, 7246],
+  "portsAttributes": {
+    "7246": {
+      "protocol": "https"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  }
+}
