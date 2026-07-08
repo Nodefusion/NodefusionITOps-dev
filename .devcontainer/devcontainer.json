@@ -17,7 +17,8 @@
   },
 
   "initializeCommand": "mkdir -p ${localWorkspaceFolder}/../ado-source",
-  "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && echo $SECRETS_JSON > src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj",
+  "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && echo $SECRETS_JSON > src/Nodefusion.NodefusionITOps/secrets.json && cp src/Nodefusion.NodefusionITOps/settings/appsettings.Development.json src/Nodefusion.NodefusionITOps/settings/appsettings.development.json && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj",
+
   "forwardPorts": [5114, 7246],
   "portsAttributes": {
     "7246": {
