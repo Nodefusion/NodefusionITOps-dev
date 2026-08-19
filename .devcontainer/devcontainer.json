@@ -1,31 +1,48 @@
 {
-  "name": "NodefusionITOps .NET Codespace",
+  "name": "Nodefusion Multi-Project Codespace",
   "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
 
   "features": {
     "ghcr.io/microsoft/codespace-features/external-repository:latest": {
       "gitProvider": "azuredevops",
-      "cloneUrl": "https://dev.azure.com/Nodefusion/NodefusionITOps/_git/NodefusionITOps",
-      "folder": "/workspaces/ado-source"
+      "cloneUrl": "https://dev.azure.com/Nodefusion/NodefusionITOps/_git/NodefusionITOps,https://dev.azure.com/Nodefusion/Aexum/_git/Aexum",
+      "folder": "/workspaces"
     }
   },
 
-  "workspaceFolder": "/workspaces/ado-source",
+  "workspaceFolder": "/workspaces",
 
   "remoteEnv": {
     "ASPNETCORE_ENVIRONMENT": "Development"
   },
 
-  "initializeCommand": "mkdir -p ${localWorkspaceFolder}/../ado-source",
-  "postStartCommand": "external-git clone && external-git config && dotnet dev-certs https && echo $SECRETS_JSON > src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj",
+  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && dotnet dev-certs https",
 
-  "forwardPorts": [5114, 7246],
+  "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj",
+
+  "forwardPorts": [5114, 7246, 44377, 44363, 5246],
   "portsAttributes": {
     "5114": {
+      "label": "ITOps HTTP",
       "visibility": "public"
     },
     "7246": {
+      "label": "ITOps HTTPS",
       "protocol": "https",
+      "visibility": "public"
+    },
+    "44377": {
+      "label": "Aexum WebAssembly HTTPS",
+      "protocol": "https",
+      "visibility": "public"
+    },
+    "44363": {
+      "label": "Aexum WebApi HTTPS",
+      "protocol": "https",
+      "visibility": "public"
+    },
+    "5246": {
+      "label": "Aexum WebApi HTTP",
       "visibility": "public"
     }
   },
