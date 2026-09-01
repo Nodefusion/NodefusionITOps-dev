@@ -3,9 +3,12 @@
   "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
 
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
     "ghcr.io/microsoft/codespace-features/external-repository:latest": {
       "gitProvider": "azuredevops",
-      "cloneUrl": "https://dev.azure.com/Nodefusion/NodefusionITOps/_git/NodefusionITOps,https://dev.azure.com/Nodefusion/Aexum/_git/Aexum",
+      "cloneUrl": "https://dev.azure.com/Nodefusion/NodefusionITOps/_git/NodefusionITOps,https://dev.azure.com/Nodefusion/Aexum/_git/Aexum,https://dev.azure.com/Nodefusion/Internal/_git/Nodefusion.Mock.Idp",
       "folder": "/workspaces"
     }
   },
@@ -16,11 +19,15 @@
     "ASPNETCORE_ENVIRONMENT": "Development"
   },
 
-  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && dotnet dev-certs https",
+  "postCreateCommand": {
+    "claude-cli":  "curl -fsSL https://claude.ai/install.sh | bash",
+    "devcerts":    "dotnet dev-certs https",
+    "playwright":  "npm install -g playwright && playwright install --with-deps chromium"
+  },
 
-  "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj",
+  "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj && dotnet restore /workspaces/Nodefusion.Mock.Idp",
 
-  "forwardPorts": [5114, 7246, 44377, 44363, 5246],
+  "forwardPorts": [5114, 7246, 44377, 44363, 5246, 5001],
   "portsAttributes": {
     "5114": {
       "label": "ITOps HTTP",
@@ -44,6 +51,11 @@
     "5246": {
       "label": "Aexum WebApi HTTP",
       "visibility": "public"
+    },
+    "5001": {
+      "label": "Mock.IDP HTTPS",
+      "protocol": "https",
+      "visibility": "private"
     }
   },
 
