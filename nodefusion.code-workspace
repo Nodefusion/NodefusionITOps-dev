@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "name": "⚙️ Devcontainer",
+      "path": "/workspaces/NodefusionITOps-dev"
+    },
+    {
       "name": "NodefusionITOps",
       "path": "/workspaces/NodefusionITOps"
     },
@@ -12,5 +16,8 @@
       "name": "NodefusionMockIDP",
       "path": "/workspaces/Nodefusion.Mock.Idp"
     }
-  ]
+  ],
+  "settings": {
+    "terminal.integrated.cwd": "/workspaces"
+  }
 }
