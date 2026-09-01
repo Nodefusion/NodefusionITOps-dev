@@ -57,6 +57,9 @@
 
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.cwd": "/workspaces"
+      },
       "extensions": [
         "ms-dotnettools.csharp",
         "ms-dotnettools.csdevkit",
