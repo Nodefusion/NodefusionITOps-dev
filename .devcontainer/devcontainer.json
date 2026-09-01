@@ -16,10 +16,11 @@
   "workspaceFile": "/workspaces/NodefusionITOps-dev/nodefusion.code-workspace",
 
   "remoteEnv": {
-    "ASPNETCORE_ENVIRONMENT": "Development"
-  },
+    "ASPNETCORE_ENVIRONMENT": "Development",
+    "SSL_CERT_DIR": "$HOME/.aspnet/dev-certs/trust:/usr/lib/ssl/certs"
+},
 
-  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && dotnet dev-certs https --trust && npm install -g playwright && playwright install --with-deps chromium",
+"postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && dotnet dev-certs https && npm install -g playwright && playwright install --with-deps chromium",
 
   "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj && dotnet restore /workspaces/Nodefusion.Mock.Idp",
 
