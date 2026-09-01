@@ -7,6 +7,10 @@
     {
       "name": "Aexum",
       "path": "/workspaces/Aexum"
+    },
+    {
+      "name": "NodefusionMockIDP",
+      "path": "/workspaces/NodefusionMockIDP"
     }
   ]
 }
