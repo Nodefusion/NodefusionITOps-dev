@@ -27,7 +27,7 @@
 
   "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj && dotnet restore /workspaces/Nodefusion.Mock.Idp",
 
-  "forwardPorts": [5114, 7246, 44377, 44363, 5246, 5001],
+  "forwardPorts": [5114, 7246, 44377, 44363, 5246, 5099],
   "portsAttributes": {
     "5114": {
       "label": "ITOps HTTP",
@@ -52,7 +52,7 @@
       "label": "Aexum WebApi HTTP",
       "visibility": "public"
     },
-    "5001": {
+    "5099": {
       "label": "Mock.IDP HTTPS",
       "protocol": "https",
       "visibility": "private"
