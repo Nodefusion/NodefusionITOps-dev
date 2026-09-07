@@ -22,8 +22,8 @@
 
   "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash || true && dotnet dev-certs https || true && npm install -g playwright || true && playwright install --with-deps chromium || true",
 
-  "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj && dotnet restore /workspaces/Nodefusion.Mock.Idp && mkdir -p ~/.claude && cp /workspaces/Nodefusion.Agents.Skills/config/claude/settings.json ~/.claude/settings.json && cp /workspaces/Nodefusion.Agents.Skills/scripts/claude-run.sh /workspaces/claude-run.sh && chmod +x /workspaces/claude-run.sh && echo 'alias crun=\"/workspaces/claude-run.sh\"' >> ~/.bashrc",
-
+  "postStartCommand": "external-git clone && external-git config && echo \"$SECRETS_JSON\" > /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/secrets.json && dotnet restore /workspaces/NodefusionITOps/src/Nodefusion.NodefusionITOps/Nodefusion.NodefusionITOps.csproj && echo \"$SECRETS_JSON_AEXUM\" > /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/secrets.json && dotnet restore /workspaces/Aexum/src/Nodefusion.Aexum.WebApi/Nodefusion.Aexum.WebApi.csproj && dotnet restore /workspaces/Nodefusion.Mock.Idp && mkdir -p ~/.claude && cp /workspaces/Nodefusion.Agents.Skills/config/claude/settings.json ~/.claude/settings.json || true && cp /workspaces/Nodefusion.Agents.Skills/scripts/claude-run.sh /workspaces/claude-run.sh || true && chmod +x /workspaces/claude-run.sh || true && echo 'alias crun=\"/workspaces/claude-run.sh\"' >> ~/.bashrc || true",
+  
   "forwardPorts": [5114, 7246, 44377, 44363, 5246, 5001],
   "portsAttributes": {
     "5114": {
