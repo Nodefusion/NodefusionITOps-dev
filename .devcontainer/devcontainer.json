@@ -65,7 +65,8 @@
         "ms-dotnettools.csharp",
         "ms-dotnettools.csdevkit",
         "GitHub.copilot",
-        "GitHub.copilot-chat"
+        "GitHub.copilot-chat",
+        "ms-codespaces-tools.ado-codespaces-auth"
       ]
     }
   }
