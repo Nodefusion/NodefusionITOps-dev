@@ -2,24 +2,6 @@
 
 ## GitHub Repository Structure
 
-### Public repository content
-
-Include files:
-- ./CODE\_OF\_CONDUCT.md
-- ./LICENSE
-- ./README.md
-- ./SECURITY.md
-
-Optional:
-- /.github/workflows/deploy.yml
-- /.github/workflows/test-deploy.yml
-
-### GitHub Pages
-- Build and deployment: GitHub Actions
-- Custom domain: smth.domain.com
-
----
-
 ## How It Works — Automatic Setup
 
 ### postCreateCommand
